@@ -30,7 +30,7 @@ class SSR(object):
         port = random.randint(9001,9999)
         username = get_username()
         mnt_folder = '/mnt/' + get_mnt_folder()
-        scmd = f'''ssh -t {self.args._[0]} -R {port}:0:22 'sudo rm ~/.ssh/known_hosts;  sudo mkdir -p {mnt_folder}; sudo umount -l {mnt_folder};sudo sshfs "{username}@0:{cwd}/" "{mnt_folder}" -p {port} -o reconnect,allow_other,ServerAliveInterval=10,ServerAliveCountMax=2; bash -l'  '''
+        scmd = f'''ssh -t {self.args._[0]} -R {port}:0:22 'sudo rm ~/.ssh/known_hosts;  sudo mkdir -p {mnt_folder}; alias ime="bash /media/cdrom/install-me.sh"; sudo umount -l {mnt_folder};sudo sshfs "{username}@0:{cwd}/" "{mnt_folder}" -p {port} -o reconnect,allow_other,ServerAliveInterval=10,ServerAliveCountMax=2; bash -l'  '''
         print(scmd)
         os.system(scmd)
 
